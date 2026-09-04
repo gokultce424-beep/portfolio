@@ -1,0 +1,16 @@
+﻿{
+  "name": "Hari Gokul Prasad — Full Stack Developer & Designer",
+  "short_name": "harigokulprasad.dev",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#030712",
+  "theme_color": "#030712",
+  "description": "Portfolio of Hari Gokul Prasad — Full Stack Developer & Designer.",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}
