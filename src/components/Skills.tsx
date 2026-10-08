@@ -1,4 +1,4 @@
-﻿import React, { useState } from 'react';
+import React, { useState } from 'react';
 import { ArrowRight } from 'lucide-react';
 import { ScrollReveal } from './ScrollReveal';
 
@@ -16,6 +16,27 @@ export const Skills: React.FC = () => {
   const categories: SkillCategory[] = ['Frontend', 'Backend', 'Databases', 'Others'];
 
   const workStack: TechItem[] = [
+    {
+      name: 'React',
+      category: 'Frontend',
+      icon: (
+        <svg className="h-5 w-5 fill-current" viewBox="0 0 24 24">
+          <ellipse cx="12" cy="12" rx="10" ry="4.2" fill="none" stroke="currentColor" strokeWidth="1.5" />
+          <ellipse cx="12" cy="12" rx="10" ry="4.2" transform="rotate(60 12 12)" fill="none" stroke="currentColor" strokeWidth="1.5" />
+          <ellipse cx="12" cy="12" rx="10" ry="4.2" transform="rotate(120 12 12)" fill="none" stroke="currentColor" strokeWidth="1.5" />
+          <circle cx="12" cy="12" r="2" />
+        </svg>
+      ),
+    },
+    {
+      name: 'Vite',
+      category: 'Frontend',
+      icon: (
+        <svg className="h-5 w-5 fill-current" viewBox="0 0 24 24">
+          <path d="M23.473 3.419L12.723.048c-.46-.145-.96.085-1.15.53L7.76 10.158l3.655-1.228-2.67 9.878 12.828-14.28c.416-.464.24-1.205-.3-1.309zM.532 3.42c-.54.103-.716.844-.3 1.308l10.963 12.21-1.332-6.529 3.036 1.02L12.43.578c-.19-.445-.69-.675-1.15-.53L.532 3.42z" />
+        </svg>
+      ),
+    },
     {
       name: 'Angular',
       category: 'Frontend',
@@ -58,6 +79,33 @@ export const Skills: React.FC = () => {
       icon: (
         <svg className="h-5 w-5 fill-current" viewBox="0 0 24 24">
           <path d="M12.001,4.8c-3.2,0-5.2,1.6-6,4.8c1.2-1.6,2.6-2.2,4.2-1.8c0.913,0.228,1.565,0.89,2.288,1.624 C13.666,10.618,15.027,12,18.001,12c3.2,0,5.2-1.6,6-4.8c-1.2,1.6-2.6,2.2-4.2,1.8c-0.913-0.228-1.565-0.89-2.288-1.624 C16.337,6.182,14.976,4.8,12.001,4.8z M6.001,12c-3.2,0-5.2,1.6-6,4.8c1.2-1.6,2.6-2.2,4.2-1.8c0.913,0.228,1.565,0.89,2.288,1.624 c1.177,1.194,2.538,2.576,5.512,2.576c3.2,0,5.2-1.6,6-4.8c-1.2,1.6-2.6,2.2-4.2,1.8c-0.913-0.228-1.565-0.89-2.288-1.624 C10.337,13.382,8.976,12,6.001,12z" />
+        </svg>
+      ),
+    },
+    {
+      name: 'Java',
+      category: 'Frontend',
+      icon: (
+        <svg className="h-5 w-5 fill-current" viewBox="0 0 24 24">
+          <path d="M8.851 18.56s-.917.534.667.715c2.417.275 3.963.238 6.852-.275 0 0 .524.346.99.643-4.148 1.5-8.916.643-8.509-.436v-.647zm-1.077-3.084s-1.034.673.499.897c2.955.433 5.434.346 9.176-.39 0 0 .393.385.736.63-4.99 1.637-11.07.784-10.411-.537v-.6zm4.01-4.819c.662.774.223 1.488.223 1.488s1.666-.883 1.054-2.023c-.66-1.229-1.928-1.844-.805-3.329 0 0-3.31 1.077-.472 3.864zm6.65 6.444c-1.053.076-2.148.118-3.266.125 3.018-.838 5.669-2.11 4.757-3.344-.925-1.253-3.693-1.428-5.323-.464.717-.384 1.704-.632 2.508-.632 2.639 0 4.35 1.058 3.52 2.583-.82 1.508-3.922 2.662-7.196 2.662-1.025 0-2.046-.07-3.042-.204.426.31 1.033.518 1.83.606 2.63.292 4.416.242 7.74-.298 0 0 .584.408 1.05.656-3.754 1.34-8.083.743-9.01-.219-.597-.617-.45-1.378.432-1.944-2.482-.692-4.047-1.848-3.21-2.993.93-1.272 3.847-1.446 5.565-.436-.88-.436-2.108-.692-3.085-.692-2.825 0-4.664 1.114-3.75 2.76.88 1.587 4.195 2.784 7.712 2.784.773 0 1.54-.037 2.29-.112-1.636-.57-1.874-1.246-1.874-1.246s.902.164 2.196-.289c1.649-.578 2.05-1.22 1.62-1.867-.625-.937-2.735-1.05-3.882-.262.593-.243 1.36-.375 1.98-.375 1.823 0 3.03.682 2.457 1.758-.57 1.066-2.617 1.854-5.068 1.854-.42 0-.832-.023-1.233-.064 0 0-1.867 1.488 2.012 1.942 3.09.362 5.617.275 9.426-.412 0 0 .524.364.887.604zM10.87 0s-2.08 1.984 1.116 3.633c2.464 1.272 1.633 2.502 1.633 2.502s-.08-.992-1.602-1.782C9.843 3.2 8.784 1.93 10.87 0z" />
+        </svg>
+      ),
+    },
+    {
+      name: 'Python',
+      category: 'Frontend',
+      icon: (
+        <svg className="h-5 w-5 fill-current" viewBox="0 0 24 24">
+          <path d="M11.914 0C5.82 0 6.2 2.656 6.2 2.656l.007 2.752h5.814v.826H3.92S0 5.767 0 11.957c0 6.19 3.418 5.974 3.418 5.974h2.04v-2.868s-.11-3.418 3.354-3.418h5.772s3.23.056 3.23-3.176V3.176S18.342 0 11.914 0zm-3.21 1.706a1.05 1.05 0 1 1 0 2.1 1.05 1.05 0 0 1 0-2.1zM12.086 24c6.094 0 5.714-2.656 5.714-2.656l-.007-2.752H11.98v-.826h8.101s3.92.467 3.92-5.723c0-6.19-3.418-5.974-3.418-5.974h-2.04v2.868s.11 3.418-3.354 3.418H9.417s-3.23-.056-3.23 3.176v5.292s-.524 3.176 5.9 3.176zm3.21-1.706a1.05 1.05 0 1 1 0-2.1 1.05 1.05 0 0 1 0 2.1z" />
+        </svg>
+      ),
+    },
+    {
+      name: 'Spring Boot',
+      category: 'Backend',
+      icon: (
+        <svg className="h-5 w-5 fill-current" viewBox="0 0 24 24">
+          <path d="M21.996 11.23a10.016 10.016 0 0 0-.79-3.08 10.086 10.086 0 0 0-2.18-3.32 9.98 9.98 0 0 0-3.32-2.18 10.06 10.06 0 0 0-6.16 0 9.98 9.98 0 0 0-3.32 2.18 10.086 10.086 0 0 0-2.18 3.32 10.05 10.05 0 0 0 0 7.7 10.086 10.086 0 0 0 2.18 3.32 9.98 9.98 0 0 0 3.32 2.18 10.06 10.06 0 0 0 6.16 0 9.98 9.98 0 0 0 3.32-2.18 10.086 10.086 0 0 0 2.18-3.32c.54-1.22.8-2.52.79-3.83zm-1.84.02a8.16 8.16 0 0 1-.65 2.52 8.24 8.24 0 0 1-1.78 2.72 8.16 8.16 0 0 1-2.72 1.78 8.24 8.24 0 0 1-5.04 0 8.16 8.16 0 0 1-2.72-1.78 8.24 8.24 0 0 1-1.78-2.72 8.23 8.23 0 0 1 0-6.3 8.24 8.24 0 0 1 1.78-2.72 8.16 8.16 0 0 1 2.72-1.78 8.24 8.24 0 0 1 5.04 0 8.16 8.16 0 0 1 2.72 1.78 8.24 8.24 0 0 1 1.78 2.72c.44 1 .66 2.07.65 3.14z" />
         </svg>
       ),
     },
@@ -127,13 +175,13 @@ export const Skills: React.FC = () => {
   ];
 
   return (
-    <section id="skills" className="relative mx-auto mt-20 max-w-5xl px-6 md:mt-28 lg:px-0">
+    <section id="skills" className="relative mx-auto mt-16 w-full max-w-7xl xl:max-w-[1440px] 2xl:max-w-[1600px] px-3 min-[360px]:px-4 sm:px-6 md:mt-24 md:px-10 lg:px-16 xl:px-20">
       {/* Section Header */}
       <ScrollReveal direction="up" delay={100}>
         <div className="relative inline-flex items-center justify-center">
-          <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-tr from-cyan-500/20 via-blue-500/20 to-sky-400/20 p-[1px] border border-cyan-500/30 shadow-lg shadow-cyan-500/10">
+          <div className="flex h-11 w-11 sm:h-12 sm:w-12 items-center justify-center rounded-2xl bg-gradient-to-tr from-cyan-500/20 via-blue-500/20 to-sky-400/20 p-[1px] border border-cyan-500/30 shadow-lg shadow-cyan-500/10">
             <svg
-              className="h-6 w-6 text-cyan-400"
+              className="h-5 w-5 sm:h-6 sm:w-6 text-cyan-400"
               viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"
@@ -149,23 +197,23 @@ export const Skills: React.FC = () => {
           </div>
         </div>
 
-        <h3 className="mt-4 text-3xl font-bold tracking-tight text-white md:text-4xl">
+        <h2 className="mt-3 sm:mt-4 text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-white">
           My Skills
-        </h3>
+        </h2>
       </ScrollReveal>
 
       {/* Grid Content */}
-      <div className="mt-8 grid grid-cols-1 gap-8 md:mt-12 md:grid-cols-[1fr_2fr] md:gap-14">
+      <div className="mt-6 sm:mt-8 grid grid-cols-1 gap-6 sm:gap-8 md:mt-10 md:grid-cols-[1fr_2fr] md:gap-12 xl:gap-16">
         {/* Left Column: Philosophy */}
-        <ScrollReveal direction="left" delay={200} className="text-xl text-white">
+        <ScrollReveal direction="left" delay={200} className="text-base sm:text-lg md:text-xl text-white">
           <div className="font-semibold text-zinc-100">I build things for the people</div>
-          <div className="mt-1.5 font-serif text-2xl font-normal italic text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 via-sky-300 to-blue-400 md:text-3xl">
+          <div className="mt-1.5 sm:mt-2 font-serif text-xl font-normal italic text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 via-sky-300 to-blue-400 sm:text-2xl md:text-3xl">
             I can Design, Develop, Deploy
           </div>
         </ScrollReveal>
 
         {/* Right Column: Narrative */}
-        <ScrollReveal direction="right" delay={300} className="flex flex-col gap-4 text-base leading-relaxed text-zinc-300 md:text-lg">
+        <ScrollReveal direction="right" delay={300} className="flex flex-col gap-3 sm:gap-4 text-sm leading-relaxed text-zinc-300 sm:text-base md:text-lg font-light">
           <p>
             My core focus is engineering high-performance, accessible, and scalable web solutions using modern full-stack architectures. I combine frontend craft with robust backend services, structured APIs, and optimized databases.
           </p>
@@ -176,13 +224,13 @@ export const Skills: React.FC = () => {
       </div>
 
       {/* Skills Categories Row */}
-      <ScrollReveal direction="up" delay={200} className="mt-12 grid grid-cols-1 items-start gap-6 md:mt-16 md:grid-cols-[1fr_2fr]">
-        <div className="flex items-center gap-3 text-xl font-semibold text-white">
-          <span>Skills</span>
+      <ScrollReveal direction="up" delay={200} className="mt-10 sm:mt-12 grid grid-cols-1 items-start gap-4 sm:gap-6 md:mt-16 md:grid-cols-[1fr_2fr] md:gap-14 xl:gap-20">
+        <div className="flex items-center gap-3 text-lg sm:text-xl font-semibold text-white">
+          <h3 className="text-lg sm:text-xl font-semibold text-white">Skills</h3>
           <ArrowRight className="h-4 w-4 text-cyan-400" />
         </div>
 
-        <nav className="flex flex-wrap items-center gap-3 text-zinc-300">
+        <nav className="flex flex-wrap items-center gap-2 sm:gap-3 text-zinc-300">
           {categories.map((cat) => {
             const isHovered = hoveredCategory === cat;
             return (
@@ -191,7 +239,7 @@ export const Skills: React.FC = () => {
                 type="button"
                 onMouseEnter={() => setHoveredCategory(cat)}
                 onMouseLeave={() => setHoveredCategory(null)}
-                className={`cursor-pointer select-none rounded-lg px-4 py-2 text-sm font-medium transition-all duration-300 ${
+                className={`cursor-pointer select-none rounded-lg px-3.5 py-1.5 sm:px-4 sm:py-2 text-xs sm:text-base font-medium transition-all duration-300 ${
                   isHovered
                     ? 'bg-gradient-to-r from-cyan-400 via-sky-500 to-blue-600 text-white shadow-lg shadow-cyan-500/25 scale-[1.03]'
                     : 'bg-zinc-800/80 text-zinc-300 hover:bg-zinc-700/80'
@@ -205,13 +253,13 @@ export const Skills: React.FC = () => {
       </ScrollReveal>
 
       {/* Work Stack Grid Row */}
-      <ScrollReveal direction="up" delay={300} className="mt-12 grid grid-cols-1 items-start gap-6 md:mt-16 md:grid-cols-[1fr_2fr]">
-        <div className="flex items-center gap-3 text-xl font-semibold text-white">
-          <span>Work Stack</span>
+      <ScrollReveal direction="up" delay={300} className="mt-10 sm:mt-12 grid grid-cols-1 items-start gap-4 sm:gap-6 md:mt-16 md:grid-cols-[1fr_2fr] md:gap-14 xl:gap-20">
+        <div className="flex items-center gap-3 text-lg sm:text-xl font-semibold text-white">
+          <h3 className="text-lg sm:text-xl font-semibold text-white">Work Stack</h3>
           <ArrowRight className="h-4 w-4 text-cyan-400" />
         </div>
 
-        <div className="grid grid-cols-2 gap-y-7 gap-x-6 sm:grid-cols-3 md:grid-cols-4">
+        <div className="grid grid-cols-2 gap-y-5 sm:gap-y-7 gap-x-3 sm:gap-x-6 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-4 2xl:grid-cols-4">
           {workStack.map((tech) => {
             const isCategoryHighlighted = hoveredCategory !== null && tech.category === hoveredCategory;
             const isDimmed = hoveredCategory !== null && tech.category !== hoveredCategory;
@@ -219,7 +267,7 @@ export const Skills: React.FC = () => {
             return (
               <div
                 key={tech.name}
-                className={`group flex max-w-fit cursor-pointer items-center gap-3 border-b-2 pb-1.5 transition-all duration-200 ${
+                className={`group flex max-w-fit cursor-pointer items-center gap-2 sm:gap-3 border-b-2 pb-1 sm:pb-1.5 transition-all duration-200 ${
                   isCategoryHighlighted
                     ? 'border-cyan-400 text-white scale-[1.03] opacity-100'
                     : isDimmed
@@ -239,7 +287,7 @@ export const Skills: React.FC = () => {
                   {tech.icon}
                 </div>
                 <span
-                  className={`text-sm font-medium tracking-tight transition-colors duration-200 ${
+                  className={`text-xs sm:text-base font-medium tracking-tight transition-colors duration-200 ${
                     isCategoryHighlighted
                       ? 'text-white font-semibold'
                       : isDimmed

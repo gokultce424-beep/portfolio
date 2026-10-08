@@ -23,11 +23,11 @@ export const App: React.FC = () => {
         {/* Subtle dot matrix grid */}
         <div className="absolute inset-0 bg-grid-pattern opacity-40" />
 
-        {/* Floating gradient nebula orbs */}
-        <div className="animate-float absolute -top-32 left-1/2 -translate-x-1/2 w-[700px] h-[350px] bg-gradient-to-b from-cyan-600/15 via-blue-600/10 to-transparent blur-[100px]" />
-        <div className="animate-float-reverse absolute top-[400px] -left-48 w-[450px] h-[450px] rounded-full bg-blue-600/10 blur-[120px]" />
-        <div className="animate-float absolute top-[800px] -right-48 w-[450px] h-[450px] rounded-full bg-cyan-500/10 blur-[120px]" />
-        <div className="animate-float-reverse absolute top-[1300px] left-1/3 w-[500px] h-[300px] rounded-full bg-sky-500/08 blur-[130px]" />
+        {/* Floating gradient nebula orbs scaled for 1080p, 2K, and 4K */}
+        <div className="animate-float absolute -top-32 left-1/2 -translate-x-1/2 w-[700px] 2xl:w-[1200px] h-[350px] 2xl:h-[500px] bg-gradient-to-b from-cyan-600/15 via-blue-600/10 to-transparent blur-[100px] 2xl:blur-[140px]" />
+        <div className="animate-float-reverse absolute top-[400px] -left-48 2xl:-left-32 w-[450px] 2xl:w-[750px] h-[450px] 2xl:h-[750px] rounded-full bg-blue-600/10 blur-[120px] 2xl:blur-[160px]" />
+        <div className="animate-float absolute top-[800px] -right-48 2xl:-right-32 w-[450px] 2xl:w-[750px] h-[450px] 2xl:h-[750px] rounded-full bg-cyan-500/10 blur-[120px] 2xl:blur-[160px]" />
+        <div className="animate-float-reverse absolute top-[1300px] left-1/3 w-[500px] 2xl:w-[900px] h-[300px] 2xl:h-[500px] rounded-full bg-sky-500/08 blur-[130px] 2xl:blur-[170px]" />
       </div>
 
       {/* Foreground Content */}

@@ -1,4 +1,4 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="en" class="scroll-smooth dark">
   <head>
     <meta charset="UTF-8" />
@@ -8,33 +8,63 @@
     <meta name="theme-color" content="#030712" />
     <meta name="color-scheme" content="dark" />
 
+    <!-- Performance: Preconnect & DNS-Prefetch -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
+
     <!-- Primary On-Page SEO Meta Tags -->
     <title>Hari Gokul Prasad — Full Stack Developer &amp; Designer | harigokulprasad.dev</title>
-    <meta name="title" content="Hari Gokul Prasad — Full Stack Developer & Designer | harigokulprasad.dev" />
-    <meta name="description" content="Official portfolio of Hari Gokul Prasad, Full Stack Developer & Designer specializing in Angular, React, Node.js, PowerBI, and scalable web applications." />
-    <meta name="keywords" content="Hari Gokul Prasad, harigokulprasad.dev, Full Stack Developer, UI UX Designer, Angular, React, TypeScript, Tailwind CSS, Node.js, PowerBI Report Builder, Web Developer Portfolio" />
+    <meta name="title" content="Hari Gokul Prasad — Full Stack Developer &amp; Designer | harigokulprasad.dev" />
+    <meta name="description" content="Portfolio of Hari Gokul Prasad, Full Stack Developer &amp; Designer. Building high-performance web apps with React, Vite, Angular, Spring Boot, Java, and Python." />
+    <meta name="keywords" content="Hari Gokul Prasad, Gokul, harigokulprasad.dev, Full Stack Developer, Designer, React, Vite, Angular, Spring Boot, Java, Python, Node.js, Express.js, MySQL, Firebase, Tailwind CSS, TypeScript, PowerBI Report Builder, Web Developer Portfolio, Chennai Developer" />
     <meta name="author" content="Hari Gokul Prasad" />
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
-    <meta name="googlebot" content="index, follow" />
+    <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+    <meta name="bingbot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
     <link rel="canonical" href="https://harigokulprasad.dev/" />
+
+    <!-- Local & Geographic SEO -->
+    <meta name="geo.region" content="IN-TN" />
+    <meta name="geo.placename" content="Chennai, Tamil Nadu, India" />
+    <meta name="geo.position" content="13.0827;80.2707" />
+    <meta name="ICBM" content="13.0827, 80.2707" />
+
+    <!-- Mobile & PWA Optimization -->
+    <meta name="application-name" content="harigokulprasad.dev" />
+    <meta name="apple-mobile-web-app-title" content="harigokulprasad.dev" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="format-detection" content="telephone=no" />
+    <link rel="apple-touch-icon" href="/favicon.svg" />
 
     <!-- Open Graph / Facebook / LinkedIn -->
     <meta property="og:type" content="profile" />
     <meta property="og:url" content="https://harigokulprasad.dev/" />
     <meta property="og:title" content="Hari Gokul Prasad — Full Stack Developer &amp; Designer" />
-    <meta property="og:description" content="I design and craft beautiful websites for users, that solve business tasks." />
+    <meta property="og:description" content="Hey, I'm Gokul. I design and craft high-performance web applications and scalable solutions that solve business tasks." />
+    <meta property="og:image" content="https://harigokulprasad.dev/og-image.svg" />
+    <meta property="og:image:secure_url" content="https://harigokulprasad.dev/og-image.svg" />
+    <meta property="og:image:type" content="image/svg+xml" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Hari Gokul Prasad — Full Stack Developer &amp; Designer Portfolio Preview" />
     <meta property="og:site_name" content="harigokulprasad.dev" />
     <meta property="og:locale" content="en_US" />
     <meta property="profile:first_name" content="Hari Gokul" />
     <meta property="profile:last_name" content="Prasad" />
+    <meta property="profile:username" content="harigokulprasad" />
 
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content="https://harigokulprasad.dev/" />
-    <meta property="twitter:title" content="Hari Gokul Prasad — Full Stack Developer &amp; Designer" />
-    <meta property="twitter:description" content="I design and craft beautiful websites for users, that solve business tasks." />
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="https://harigokulprasad.dev/" />
+    <meta name="twitter:title" content="Hari Gokul Prasad — Full Stack Developer &amp; Designer" />
+    <meta name="twitter:description" content="Hey, I'm Gokul. Full Stack Developer &amp; Designer specializing in React, Vite, Angular, Spring Boot, Node.js, Java, and Python." />
+    <meta name="twitter:image" content="https://harigokulprasad.dev/og-image.svg" />
+    <meta name="twitter:image:alt" content="Hari Gokul Prasad — Portfolio Preview" />
 
-    <!-- Enhanced Schema.org JSON-LD Structured Data for Google Rich Snippets -->
+    <!-- Comprehensive Schema.org JSON-LD Structured Data Graph for Google Rich Snippets -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -45,35 +75,114 @@
             "url": "https://harigokulprasad.dev/",
             "name": "Hari Gokul Prasad Portfolio",
             "description": "Portfolio of Hari Gokul Prasad, Full Stack Developer & Designer",
+            "inLanguage": "en-US",
             "publisher": {
               "@id": "https://harigokulprasad.dev/#person"
+            },
+            "author": {
+              "@id": "https://harigokulprasad.dev/#person"
+            }
+          },
+          {
+            "@type": "ProfilePage",
+            "@id": "https://harigokulprasad.dev/#profilepage",
+            "url": "https://harigokulprasad.dev/",
+            "name": "Hari Gokul Prasad — Profile",
+            "isPartOf": {
+              "@id": "https://harigokulprasad.dev/#website"
+            },
+            "mainEntity": {
+              "@id": "https://harigokulprasad.dev/#person"
+            },
+            "primaryImageOfPage": {
+              "@type": "ImageObject",
+              "url": "https://harigokulprasad.dev/og-image.svg"
             }
           },
           {
             "@type": "Person",
             "@id": "https://harigokulprasad.dev/#person",
             "name": "Hari Gokul Prasad",
+            "alternateName": "Gokul",
             "url": "https://harigokulprasad.dev/",
-            "jobTitle": "Designer & Developer",
+            "image": "https://harigokulprasad.dev/og-image.svg",
+            "jobTitle": "Full Stack Developer & Designer",
+            "email": "gokultce424@gmail.com",
             "worksFor": {
               "@type": "Organization",
               "name": "Cloud IQ Solutions Pvt Ltd."
+            },
+            "alumniOf": {
+              "@type": "EducationalOrganization",
+              "name": "Thiagarajar College of Engineering"
+            },
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Chennai",
+              "addressRegion": "Tamil Nadu",
+              "addressCountry": "IN"
             },
             "sameAs": [
               "https://www.linkedin.com/in/hari-gokul-prasad-k-p-552491394/"
             ],
             "knowsAbout": [
-              "Angular",
-              "TypeScript",
-              "JavaScript",
               "React",
+              "Vite",
+              "Angular",
+              "JavaScript",
+              "HTML5",
+              "CSS3",
+              "Tailwind CSS",
+              "Java",
+              "Python",
+              "Spring Boot",
               "Node.js",
               "Express.js",
-              "Tailwind CSS",
               "MySQL",
               "Firebase",
+              "Git",
+              "GitHub",
+              "ESLint",
+              "Vercel",
               "PowerBI Report Builder",
-              "UI/UX Design"
+              "UI/UX Design",
+              "Full Stack Web Development"
+            ]
+          },
+          {
+            "@type": "BreadcrumbList",
+            "@id": "https://harigokulprasad.dev/#breadcrumb",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://harigokulprasad.dev/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "About",
+                "item": "https://harigokulprasad.dev/#about"
+              },
+              {
+                "@type": "ListItem",
+                "position": 3,
+                "name": "Skills",
+                "item": "https://harigokulprasad.dev/#skills"
+              },
+              {
+                "@type": "ListItem",
+                "position": 4,
+                "name": "Experience",
+                "item": "https://harigokulprasad.dev/#experience"
+              },
+              {
+                "@type": "ListItem",
+                "position": 5,
+                "name": "Contact",
+                "item": "https://harigokulprasad.dev/#contact"
+              }
             ]
           }
         ]
@@ -81,8 +190,6 @@
     </script>
     
     <!-- Google Fonts with optimized preconnect & swap -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
   </head>
 

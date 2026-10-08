@@ -1,4 +1,4 @@
-﻿{
+{
   "name": "Hari Gokul Prasad — Full Stack Developer & Designer",
   "short_name": "harigokulprasad.dev",
   "start_url": "/",
@@ -10,7 +10,8 @@
     {
       "src": "/favicon.svg",
       "sizes": "any",
-      "type": "image/svg+xml"
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
     }
   ]
 }
