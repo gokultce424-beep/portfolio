@@ -1,14 +1,14 @@
 ﻿import React, { useState } from 'react';
 import { MessageSquare, Menu, X } from 'lucide-react';
 
+const navLinks = [
+  { name: 'About', href: '#about' },
+  { name: 'Skills', href: '#skills' },
+  { name: 'Experience', href: '#experience' },
+];
+
 export const Navbar: React.FC = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-
-  const navLinks = [
-    { name: 'About', href: '#about' },
-    { name: 'Skills', href: '#skills' },
-    { name: 'Experience', href: '#experience' },
-  ];
 
   return (
     <header className="relative z-50">

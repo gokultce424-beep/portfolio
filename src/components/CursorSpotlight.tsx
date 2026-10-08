@@ -15,16 +15,14 @@ export const CursorSpotlight: React.FC = () => {
     let targetY = -1000;
 
     const updatePosition = () => {
-      if (spotlight) {
-        spotlight.style.background = `radial-gradient(600px circle at ${targetX}px ${targetY}px, rgba(0, 210, 255, 0.04), transparent 80%)`;
-      }
+      spotlight.style.background = `radial-gradient(600px circle at ${targetX}px ${targetY}px, rgba(0, 210, 255, 0.04), transparent 80%)`;
       rafId = null;
     };
 
     const handleMouseMove = (e: MouseEvent) => {
       targetX = e.clientX;
       targetY = e.clientY;
-      if (!rafId) {
+      if (rafId === null) {
         rafId = window.requestAnimationFrame(updatePosition);
       }
     };
@@ -33,7 +31,7 @@ export const CursorSpotlight: React.FC = () => {
 
     return () => {
       window.removeEventListener('mousemove', handleMouseMove);
-      if (rafId) window.cancelAnimationFrame(rafId);
+      if (rafId !== null) window.cancelAnimationFrame(rafId);
     };
   }, []);
 
@@ -41,7 +39,7 @@ export const CursorSpotlight: React.FC = () => {
     <div
       ref={spotlightRef}
       aria-hidden="true"
-      className="pointer-events-none fixed inset-0 z-30 transition-opacity duration-300 will-change-[background]"
+      className="pointer-events-none fixed inset-0 z-30 transition-opacity duration-300"
     />
   );
 };

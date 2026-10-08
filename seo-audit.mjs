@@ -1,8 +1,10 @@
 import fs from 'fs';
 import path from 'path';
+import { fileURLToPath } from 'url';
 
-const projectDir = 'C:\\Users\\HariGokulPrasadPraka\\Downloads\\portfolio';
+const projectDir = path.dirname(fileURLToPath(import.meta.url));
 const htmlPath = path.join(projectDir, 'index.html');
+const builtHtmlPath = path.join(projectDir, 'dist', 'index.html');
 const robotsPath = path.join(projectDir, 'public', 'robots.txt');
 const sitemapPath = path.join(projectDir, 'public', 'sitemap.xml');
 const manifestPath = path.join(projectDir, 'public', 'site.webmanifest');
@@ -108,6 +110,15 @@ if (!fs.existsSync(htmlPath)) {
   }
 }
 
+// Verify the production build includes server-rendered portfolio content.
+if (fs.existsSync(builtHtmlPath)) {
+  const builtHtml = fs.readFileSync(builtHtmlPath, 'utf8');
+  const hasRenderedContent = builtHtml.includes('<div id="root">') && builtHtml.includes('Hey, I') && builtHtml.includes('id="about"') && builtHtml.includes('id="contact"');
+  record('Rendering', 'Production HTML contains portfolio content', hasRenderedContent, hasRenderedContent ? 'Hero and page sections are present before JavaScript runs' : 'Build output is missing pre-rendered page content');
+} else {
+  record('Rendering', 'Production HTML contains portfolio content', false, 'Run npm run build first');
+}
+
 // 2. Robots.txt
 if (fs.existsSync(robotsPath)) {
   const robots = fs.readFileSync(robotsPath, 'utf8');
@@ -123,8 +134,9 @@ if (fs.existsSync(robotsPath)) {
 if (fs.existsSync(sitemapPath)) {
   const sitemap = fs.readFileSync(sitemapPath, 'utf8');
   const hasRoot = sitemap.includes('<loc>https://harigokulprasad.dev/</loc>');
-  const count = (sitemap.match(/<loc>/g) || []).length;
-  record('Sitemap', 'sitemap.xml Configuration', hasRoot && count >= 5, `${count} URLs defined`);
+  const urls = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => match[1]);
+  const hasOnlyPageUrls = urls.every((url) => !url.includes('#'));
+  record('Sitemap', 'sitemap.xml Configuration', hasRoot && hasOnlyPageUrls && urls.length === 1, `${urls.length} page URL(s); fragments excluded`);
 } else {
   record('Sitemap', 'sitemap.xml Presence', false, 'Missing sitemap.xml');
 }
@@ -153,3 +165,4 @@ console.log('\n========================================');
 const passCount = tests.filter(t => t.passed).length;
 console.log(`Summary: ${passCount} / ${tests.length} SEO Checks Passed (${((passCount / tests.length) * 100).toFixed(1)}%)`);
 console.log('========================================\n');
+if (passCount !== tests.length) process.exitCode = 1;

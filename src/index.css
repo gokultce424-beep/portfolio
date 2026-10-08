@@ -62,40 +62,12 @@ footer {
   }
 }
 
-@keyframes shimmer {
-  0% {
-    background-position: -200% 0;
-  }
-  100% {
-    background-position: 200% 0;
-  }
-}
-
-@keyframes pulse-glow {
-  0%, 100% {
-    opacity: 0.4;
-    filter: drop-shadow(0 0 10px rgba(0, 210, 255, 0.4));
-  }
-  50% {
-    opacity: 0.8;
-    filter: drop-shadow(0 0 20px rgba(0, 210, 255, 0.8));
-  }
-}
-
 .animate-float {
   animation: float-slow 7s ease-in-out infinite;
-  will-change: transform;
 }
 
 .animate-float-reverse {
   animation: float-reverse 9s ease-in-out infinite;
-  will-change: transform;
-}
-
-.animate-shimmer {
-  background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(0,210,255,0.2) 50%, rgba(255,255,255,0) 100%);
-  background-size: 200% 100%;
-  animation: shimmer 3s infinite;
 }
 
 /* Glowing text for 'portfolio' under the logo */
@@ -111,3 +83,4 @@ footer {
   background-image: radial-gradient(rgba(255, 255, 255, 0.07) 1px, transparent 1px);
   background-size: 32px 32px;
 }
+

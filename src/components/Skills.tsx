@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { ArrowRight } from 'lucide-react';
 import { ScrollReveal } from './ScrollReveal';
+import { useMemo } from 'react';
 
 type SkillCategory = 'Frontend' | 'Backend' | 'Databases' | 'Others';
 
@@ -10,12 +11,12 @@ interface TechItem {
   icon: React.ReactNode;
 }
 
+const categories: SkillCategory[] = ['Frontend', 'Backend', 'Databases', 'Others'];
+
 export const Skills: React.FC = () => {
   const [hoveredCategory, setHoveredCategory] = useState<SkillCategory | null>(null);
 
-  const categories: SkillCategory[] = ['Frontend', 'Backend', 'Databases', 'Others'];
-
-  const workStack: TechItem[] = [
+  const workStack = useMemo<TechItem[]>(() => [
     {
       name: 'React',
       category: 'Frontend',
@@ -172,7 +173,7 @@ export const Skills: React.FC = () => {
         </svg>
       ),
     },
-  ];
+  ], []);
 
   return (
     <section id="skills" className="relative mx-auto mt-16 w-full max-w-7xl xl:max-w-[1440px] 2xl:max-w-[1600px] px-3 min-[360px]:px-4 sm:px-6 md:mt-24 md:px-10 lg:px-16 xl:px-20">
@@ -239,6 +240,8 @@ export const Skills: React.FC = () => {
                 type="button"
                 onMouseEnter={() => setHoveredCategory(cat)}
                 onMouseLeave={() => setHoveredCategory(null)}
+                onFocus={() => setHoveredCategory(cat)}
+                onBlur={() => setHoveredCategory(null)}
                 className={`cursor-pointer select-none rounded-lg px-3.5 py-1.5 sm:px-4 sm:py-2 text-xs sm:text-base font-medium transition-all duration-300 ${
                   isHovered
                     ? 'bg-gradient-to-r from-cyan-400 via-sky-500 to-blue-600 text-white shadow-lg shadow-cyan-500/25 scale-[1.03]'
@@ -267,7 +270,7 @@ export const Skills: React.FC = () => {
             return (
               <div
                 key={tech.name}
-                className={`group flex max-w-fit cursor-pointer items-center gap-2 sm:gap-3 border-b-2 pb-1 sm:pb-1.5 transition-all duration-200 ${
+                className={`group flex max-w-fit items-center gap-2 sm:gap-3 border-b-2 pb-1 sm:pb-1.5 transition-all duration-200 ${
                   isCategoryHighlighted
                     ? 'border-cyan-400 text-white scale-[1.03] opacity-100'
                     : isDimmed

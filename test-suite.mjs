@@ -4,7 +4,7 @@ import { fileURLToPath } from 'url';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-const projectRoot = 'C:\\Users\\HariGokulPrasadPraka\\Downloads\\portfolio';
+const projectRoot = __dirname;
 
 console.log('================================================================');
 console.log('🚀 INITIATING AUTOMATED COMPREHENSIVE QA & STRESS TEST SUITE');
@@ -180,6 +180,19 @@ if (
 console.log('\n--- 3. PERFORMANCE & ASSET PROFILING ---');
 
 const distDir = path.join(projectRoot, 'dist');
+if (fs.existsSync(path.join(distDir, 'index.html'))) {
+  const builtHtml = fs.readFileSync(path.join(distDir, 'index.html'), 'utf8');
+  const hasRenderedContent = builtHtml.includes('Hey, I') && builtHtml.includes('id="about"') && builtHtml.includes('id="contact"');
+  recordTest(
+    'functional',
+    'Production HTML pre-rendering',
+    hasRenderedContent ? 'PASS' : 'FAIL',
+    hasRenderedContent ? 'Hero and main sections are present in the built HTML' : 'Pre-rendered content missing; run npm run build'
+  );
+} else {
+  recordTest('functional', 'Production HTML pre-rendering', 'FAIL', 'Run npm run build first');
+}
+
 if (fs.existsSync(distDir)) {
   const distAssets = path.join(distDir, 'assets');
   const assetFiles = fs.existsSync(distAssets) ? fs.readdirSync(distAssets) : [];
@@ -234,12 +247,10 @@ console.log('\n--- 4. STRESS & RUNTIME EXECUTION BENCHMARKS ---');
 
 // Stress Test 4.1: Component Render & Event Throttling Simulation (100,000 scroll events)
 const startTime = performance.now();
-let mockScrollY = 0;
 let rafCalls = 0;
 let ticking = false;
 
 for (let i = 0; i < 100000; i++) {
-  mockScrollY = (i % 1000) * 5;
   if (!ticking) {
     ticking = true;
     rafCalls++;
@@ -252,7 +263,7 @@ recordTest(
   'stress',
   '100,000 High-Frequency Scroll Event Burst',
   elapsed < 100 ? 'PASS' : 'FAIL',
-  `Completed 100k events in ${elapsed.toFixed(2)}ms with RAF decoupling (${(100000 / (elapsed / 1000)).toFixed(0)} events/sec throughput)`
+  `Simulated 100k event callbacks in ${elapsed.toFixed(2)}ms (${(100000 / (elapsed / 1000)).toFixed(0)} events/sec); this is not a browser benchmark`
 );
 
 // Stress Test 4.2: WorkStack Grid Matrix Scaling (Simulate 500 items rendering & filtering)
@@ -272,13 +283,15 @@ recordTest(
   'stress',
   '500-Item Dynamic Category Filtering Stress',
   filterElapsed < 5 ? 'PASS' : 'FAIL',
-  `Filtered 500 items in ${filterElapsed.toFixed(3)}ms (Zero perceptible UI lag)`
+  `Filtered ${filtered.length} of 500 simulated items in ${filterElapsed.toFixed(3)}ms`
 );
 
 // Summary output
 console.log('\n================================================================');
 console.log('📊 COMPREHENSIVE QA & STRESS TEST SUMMARY');
 console.log('================================================================');
+const failedCount = Object.values(results).reduce((total, category) => total + category.failed, 0);
+if (failedCount > 0) process.exitCode = 1;
 for (const [cat, data] of Object.entries(results)) {
   console.log(`${cat.toUpperCase()}: ${data.passed} Passed / ${data.failed} Failed (Total ${data.tests.length})`);
 }

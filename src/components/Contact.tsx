@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Send, ArrowUpRight, CheckCircle2, MessageCircle } from 'lucide-react';
 import { ScrollReveal } from './ScrollReveal';
+import { useMemo } from 'react';
 
 export const Contact: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -11,11 +12,11 @@ export const Contact: React.FC = () => {
   const [selectedTag, setSelectedTag] = useState<string>('');
   const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
 
-  const quickTags = [
+  const quickTags = useMemo(() => [
     { label: 'Interested In Hiring!', color: 'bg-emerald-400' },
     { label: 'Some Chit-Chat! ☕', color: 'bg-cyan-400' },
     { label: 'Project Collaboration', color: 'bg-blue-400' },
-  ];
+  ], []);
 
   const handleTagClick = (tagLabel: string) => {
     setSelectedTag(tagLabel);
@@ -72,7 +73,7 @@ export const Contact: React.FC = () => {
               href="mailto:gokultce424@gmail.com"
               className="font-serif text-base sm:text-xl md:text-2xl font-normal italic text-zinc-300 transition-colors hover:text-cyan-400 hover:underline decoration-cyan-400 decoration-2 underline-offset-4"
             >
-              contact@harigokulprasad.dev
+              gokultce424@gmail.com
             </a>
 
             <div className="mt-6 sm:mt-8 flex flex-wrap gap-2.5 sm:gap-3">
@@ -109,7 +110,7 @@ export const Contact: React.FC = () => {
               href="mailto:gokultce424@gmail.com"
               className="border-b-2 border-cyan-400 font-medium text-white transition-colors hover:border-cyan-300"
             >
-              contact@harigokulprasad.dev
+              gokultce424@gmail.com
             </a>{' '}
             or simply fill out the form below. Don&apos;t hesitate to reach out—I love discussing new technical opportunities and creative ideas.
           </p>
@@ -198,9 +199,9 @@ export const Contact: React.FC = () => {
               </button>
 
               {isSubmitted && (
-                <div className="flex items-center gap-2 text-xs sm:text-sm font-medium text-cyan-300 animate-in fade-in duration-300">
+                <div role="status" aria-live="polite" className="flex items-center gap-2 text-xs sm:text-sm font-medium text-cyan-300 animate-in fade-in duration-300">
                   <CheckCircle2 className="h-4 w-4 text-cyan-400" />
-                  <span>Message sent successfully!</span>
+                  <span>Your email app should open with the message ready to send.</span>
                 </div>
               )}
             </div>

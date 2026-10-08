@@ -1,9 +1,16 @@
 import http from 'http';
 import fs from 'fs';
 import path from 'path';
+import { fileURLToPath } from 'url';
 
-const distDir = 'C:\\Users\\HariGokulPrasadPraka\\Downloads\\portfolio\\dist';
+const projectDir = path.dirname(fileURLToPath(import.meta.url));
+const distDir = path.join(projectDir, 'dist');
 const PORT = 8089;
+
+if (!fs.existsSync(path.join(distDir, 'index.html')) || !fs.existsSync(path.join(distDir, 'assets'))) {
+  console.error('Build the site first with `npm run build` before running this HTTP smoke test.');
+  process.exit(1);
+}
 
 const mimeTypes = {
   '.html': 'text/html',
@@ -60,8 +67,7 @@ server.listen(PORT, async () => {
     '/sitemap.xml',
     '/site.webmanifest',
     '/resume.pdf',
-    '/assets/index-COWqUfp3.js',
-    '/assets/index-EEBQenfe.css',
+    ...fs.readdirSync(path.join(distDir, 'assets')).map((file) => `/assets/${file}`),
   ];
 
   const agent = new http.Agent({ keepAlive: true, maxSockets: 100 });
@@ -86,7 +92,7 @@ server.listen(PORT, async () => {
               res.resume();
               resolve();
             })
-            .on('error', (err) => {
+            .on('error', () => {
               failedRequests++;
               resolve();
             });
@@ -117,6 +123,6 @@ server.listen(PORT, async () => {
   console.log('================================================================\n');
 
   server.close(() => {
-    process.exit(0);
+    process.exitCode = failedRequests > 0 ? 1 : 0;
   });
 });

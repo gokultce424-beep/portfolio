@@ -14,24 +14,24 @@ export const ScrollProgressBar: React.FC = () => {
       const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
       const progress = windowHeight > 0 ? Math.min(1, Math.max(0, totalScroll / windowHeight)) : 0;
 
-      if (bar) {
-        bar.style.transform = `scaleX(${progress})`;
-      }
+      bar.style.transform = `scaleX(${progress})`;
       rafId = null;
     };
 
     const handleScroll = () => {
-      if (!rafId) {
+      if (rafId === null) {
         rafId = window.requestAnimationFrame(updateScroll);
       }
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
+    window.addEventListener('resize', handleScroll, { passive: true });
     updateScroll();
 
     return () => {
       window.removeEventListener('scroll', handleScroll);
-      if (rafId) window.cancelAnimationFrame(rafId);
+      window.removeEventListener('resize', handleScroll);
+      if (rafId !== null) window.cancelAnimationFrame(rafId);
     };
   }, []);
 

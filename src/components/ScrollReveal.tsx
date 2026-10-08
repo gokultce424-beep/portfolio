@@ -1,10 +1,40 @@
-﻿import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 interface ScrollRevealProps {
   children: React.ReactNode;
   className?: string;
   delay?: number;
   direction?: 'up' | 'down' | 'left' | 'right' | 'none';
+}
+
+const revealCallbacks = new WeakMap<Element, () => void>();
+let revealObserver: IntersectionObserver | null = null;
+
+const hiddenDirectionClasses: Record<NonNullable<ScrollRevealProps['direction']>, string> = {
+  up: 'opacity-0 translate-y-10 blur-[2px]',
+  down: 'opacity-0 -translate-y-10 blur-[2px]',
+  left: 'opacity-0 translate-x-10 blur-[2px]',
+  right: 'opacity-0 -translate-x-10 blur-[2px]',
+  none: 'opacity-0 blur-[2px]',
+};
+
+function getRevealObserver() {
+  if (!revealObserver) {
+    revealObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+
+          revealCallbacks.get(entry.target)?.();
+          revealObserver?.unobserve(entry.target);
+          revealCallbacks.delete(entry.target);
+        });
+      },
+      { threshold: 0.12, rootMargin: '0px 0px -50px 0px' },
+    );
+  }
+
+  return revealObserver;
 }
 
 export const ScrollReveal: React.FC<ScrollRevealProps> = ({
@@ -20,51 +50,30 @@ export const ScrollReveal: React.FC<ScrollRevealProps> = ({
     const element = ref.current;
     if (!element) return;
 
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-          observer.unobserve(element);
-        }
-      },
-      {
-        threshold: 0.12,
-        rootMargin: '0px 0px -50px 0px',
-      }
-    );
+    if (!('IntersectionObserver' in window)) {
+      setIsVisible(true);
+      return;
+    }
 
+    const observer = getRevealObserver();
+    revealCallbacks.set(element, () => setIsVisible(true));
     observer.observe(element);
 
     return () => {
-      if (element) observer.unobserve(element);
+      observer.unobserve(element);
+      revealCallbacks.delete(element);
     };
   }, []);
 
-  const getDirectionClasses = () => {
-    if (isVisible) {
-      return 'opacity-100 translate-x-0 translate-y-0 blur-0';
-    }
-
-    switch (direction) {
-      case 'up':
-        return 'opacity-0 translate-y-10 blur-[2px]';
-      case 'down':
-        return 'opacity-0 -translate-y-10 blur-[2px]';
-      case 'left':
-        return 'opacity-0 translate-x-10 blur-[2px]';
-      case 'right':
-        return 'opacity-0 -translate-x-10 blur-[2px]';
-      case 'none':
-      default:
-        return 'opacity-0 blur-[2px]';
-    }
-  };
+  const visibilityClasses = isVisible
+    ? 'opacity-100 translate-x-0 translate-y-0 blur-0'
+    : hiddenDirectionClasses[direction];
 
   return (
     <div
       ref={ref}
       style={{ transitionDelay: `${delay}ms` }}
-      className={`transition-all duration-700 ease-out transform-gpu will-change-transform ${getDirectionClasses()} ${className}`}
+      className={`transition-[opacity,transform,filter] duration-700 ease-out ${visibilityClasses} ${className}`}
     >
       {children}
     </div>
